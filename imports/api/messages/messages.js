@@ -9,8 +9,16 @@ const createMessage = async (message) => {
 }
 
 // Read all messages
-const getMessages = async () => {
-  return Messages.find().fetchAsync()
+const getMessages = async (
+  options = {
+    filter: {},
+    fields: {},
+    limit: 0,
+    skip: 0,
+    sort: {},
+  }
+) => {
+  return Messages.find(...options).fetchAsync()
 }
 
 // Read a specific message by ID
